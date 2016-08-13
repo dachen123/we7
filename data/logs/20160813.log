@@ -1,0 +1,761 @@
+2016-08-13 01:09:34 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3LlvznnN9eUh1tDXq96hYcASvU]]></FromUserName>
+<CreateTime>1471021774</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 01:09:34 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 01:09:34 response :
+------------
+
+2016-08-13 01:09:40 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3LlvznnN9eUh1tDXq96hYcASvU]]></FromUserName>
+<CreateTime>1471021780</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[/::)]]></Content>
+<MsgId>6317990437211668742</MsgId>
+</xml>
+
+2016-08-13 01:09:40 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 01:09:40 response :
+------------
+
+2016-08-13 01:09:58 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3LlvznnN9eUh1tDXq96hYcASvU]]></FromUserName>
+<CreateTime>1471021798</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 01:55:36 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv1cMtXq5kXemDT7abzItoFk]]></FromUserName>
+<CreateTime>1471024536</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 01:55:36 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 01:55:36 response :
+------------
+
+2016-08-13 01:56:03 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv1cMtXq5kXemDT7abzItoFk]]></FromUserName>
+<CreateTime>1471024563</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 04:20:51 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv_bpb5W7uS-7i5p6k79V4vM]]></FromUserName>
+<CreateTime>1471033251</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 04:20:51 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 04:20:51 response :
+------------
+
+2016-08-13 04:21:14 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv_bpb5W7uS-7i5p6k79V4vM]]></FromUserName>
+<CreateTime>1471033274</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 06:28:07 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv8FmtAvrhIxzw6Czt2P2N6g]]></FromUserName>
+<CreateTime>1471040886</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 06:28:07 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 06:28:07 response :
+------------
+
+2016-08-13 09:33:19 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3LlvzVeu9-NvAuvXY7cKWArp8c]]></FromUserName>
+<CreateTime>1471051999</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 09:33:19 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 09:33:19 response :
+------------
+
+2016-08-13 09:33:24 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3LlvzVeu9-NvAuvXY7cKWArp8c]]></FromUserName>
+<CreateTime>1471052004</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 09:33:24 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 09:33:24 response :
+------------
+
+2016-08-13 09:40:34 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3LlvzVeu9-NvAuvXY7cKWArp8c]]></FromUserName>
+<CreateTime>1471052434</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 11:26:34 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv_UOLlcEOIUvt4ifPbKwMAc]]></FromUserName>
+<CreateTime>1471058794</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 11:26:34 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 11:26:34 response :
+------------
+
+2016-08-13 11:26:53 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv_UOLlcEOIUvt4ifPbKwMAc]]></FromUserName>
+<CreateTime>1471058813</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 11:26:53 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 11:26:53 response :
+------------
+
+2016-08-13 13:27:43 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066063</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 13:27:43 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:27:43 response :
+------------
+
+2016-08-13 13:27:57 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066077</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:27:57 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:27:57 response :
+------------
+
+2016-08-13 13:28:16 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066096</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:28:16 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:28:16 response :
+------------
+
+2016-08-13 13:29:44 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066183</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:29:44 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:29:44 response :
+------------
+
+2016-08-13 13:30:00 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066200</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:30:00 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:30:00 response :
+------------
+
+2016-08-13 13:33:10 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066390</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:33:10 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:33:10 response :
+------------
+
+2016-08-13 13:36:41 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066601</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:36:41 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:36:41 response :
+------------
+
+2016-08-13 13:40:15 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066815</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:40:15 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:40:15 response :
+------------
+
+2016-08-13 13:40:28 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066828</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:40:28 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:40:28 response :
+------------
+
+2016-08-13 13:41:03 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066863</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:41:03 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:41:03 response :
+------------
+
+2016-08-13 13:41:33 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471066893</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 13:41:33 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 13:41:33 response :
+------------
+
+2016-08-13 14:22:36 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv6m3HTsmMdBsKuO6NaF5N5Y]]></FromUserName>
+<CreateTime>1471069356</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 14:22:36 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 14:22:36 response :
+------------
+
+2016-08-13 14:57:04 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471071424</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 14:57:04 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 14:57:04 response :
+------------
+
+2016-08-13 14:57:19 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471071439</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 14:57:19 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 14:57:19 response :
+------------
+
+2016-08-13 15:09:18 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv7JmQo9dtlFT3k2KDozE84o]]></FromUserName>
+<CreateTime>1471072158</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 15:09:18 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:09:18 response :
+------------
+
+2016-08-13 15:09:21 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv7JmQo9dtlFT3k2KDozE84o]]></FromUserName>
+<CreateTime>1471072161</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 15:09:21 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:09:21 response :
+------------
+
+2016-08-13 15:10:09 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv9i-Wi8cR6-sfJuUCuON0Po]]></FromUserName>
+<CreateTime>1471072209</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+
+2016-08-13 15:10:09 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:10:09 response :
+------------
+
+2016-08-13 15:15:20 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv7JmQo9dtlFT3k2KDozE84o]]></FromUserName>
+<CreateTime>1471072520</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=geren&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 15:15:20 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:15:20 response :
+------------
+
+2016-08-13 15:15:22 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv7JmQo9dtlFT3k2KDozE84o]]></FromUserName>
+<CreateTime>1471072522</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 15:15:22 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:15:22 response :
+------------
+
+2016-08-13 15:15:43 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv7JmQo9dtlFT3k2KDozE84o]]></FromUserName>
+<CreateTime>1471072543</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 15:15:43 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:15:43 response :
+------------
+
+2016-08-13 15:17:52 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv7JmQo9dtlFT3k2KDozE84o]]></FromUserName>
+<CreateTime>1471072672</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 15:17:52 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:17:52 response :
+------------
+
+2016-08-13 15:20:59 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llv9i-Wi8cR6-sfJuUCuON0Po]]></FromUserName>
+<CreateTime>1471072859</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 15:20:59 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:20:59 response :
+------------
+
+2016-08-13 15:36:08 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471073768</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=index&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 15:36:08 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:36:08 response :
+------------
+
+2016-08-13 15:36:21 trace :
+------------
+String:
+<xml><ToUserName><![CDATA[gh_8ca78bc58dcf]]></ToUserName>
+<FromUserName><![CDATA[oB3Llvw01x37d-gIVfBz8Hcz1ii8]]></FromUserName>
+<CreateTime>1471073781</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://www.xyyhqhs8520.com/app/index.php?i=2&c=entry&do=mail&m=jy_ppp]]></EventKey>
+<MenuId>407931548</MenuId>
+</xml>
+
+2016-08-13 15:36:21 params :
+------------
+Array:
+rule : -2 ;
+module :  ;
+message : Array ;
+
+2016-08-13 15:36:21 response :
+------------
+

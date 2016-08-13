@@ -1,0 +1,116 @@
+<?php defined('IN_IA') or exit('Access Denied');?><html>
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title><?php  if(!empty($sitem['aname'])) { ?><?php  echo $sitem['aname'];?><?php  } else { ?>有缘网<?php  } ?></title>
+    <link href="../addons/jy_ppp/css/public_reset.css" rel="stylesheet" type="text/css" />
+    <link href="../addons/jy_ppp/css/public.css" rel="stylesheet" type="text/css" />
+    <link href="../addons/jy_ppp/css/pay_intercept.css" rel="stylesheet" type="text/css" />
+    <link href="../addons/jy_ppp/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../addons/jy_ppp/js/swiper.min.js"></script>
+    
+</head>
+<body>
+<div class="top_blank"></div>
+<nav class="nav" style="position: absolute;">
+    <h2>充值</h2>
+
+    <div class="left" onclick="history.go(-1)">
+        <i class="le_trg"></i>返回
+    </div>
+</nav>
+<?php  if(!empty($sitem['huafei']) && !empty($sitem['huafei_thumb'])) { ?>
+<img src="<?php  echo tomedia($sitem['huafei_thumb'])?>" style="width:100%">
+<?php  } ?>
+<?php  if(empty($sitem['doubi'])) { ?><?php  $sitem['doubi']=='豆币'?><?php  } ?>
+<?php  if(empty($sitem['unit'])) { ?><?php  $sitem['unit']=='豆'?><?php  } ?>
+<div class="content">
+    <section data-type="doubi">
+        <div class="box-shadow">
+            <?php  if(empty($category)) { ?>
+                <?php  if($weixin==1) { ?>
+                <a href="<?php  echo $this->createMobileUrl('pay',array('op'=>'doubi','fee'=>100))?>"><ul class="click_op" style="margin:0">
+                <?php  } else { ?>
+                <a href="<?php  echo $this->createMobileUrl('pcpay',array('op'=>'doubi','fee'=>100))?>"><ul class="click_op" style="margin:0">
+                <?php  } ?>
+                    <li>
+                        <p class="tit yellow"><label style="width:100px">1300<?php  echo $sitem['unit'];?></label><span>￥100</span><span></span></p>
+                    </li>
+                    <li style="color:#E2A41F">购买<i class="re_trg"></i></li>
+                </ul></a>
+                <?php  if($weixin==1) { ?>
+                <a href="<?php  echo $this->createMobileUrl('pay',array('op'=>'doubi','fee'=>50))?>"><ul class="click_op" style="margin:0">
+                <?php  } else { ?>
+                <a href="<?php  echo $this->createMobileUrl('pcpay',array('op'=>'doubi','fee'=>50))?>"><ul class="click_op" style="margin:0">
+                <?php  } ?>
+                    <li>
+                        <p class="tit yellow"><label style="width:100px">600<?php  echo $sitem['unit'];?></label><span>￥50</span></p>
+                    </li>
+                    <li style="color:#E2A41F">购买<i class="re_trg"></i></li>
+                </ul></a>
+                <?php  if($weixin==1) { ?>
+                <a href="<?php  echo $this->createMobileUrl('pay',array('op'=>'doubi','fee'=>30))?>"><ul class="click_op" style="margin:0">
+                <?php  } else { ?>
+                <a href="<?php  echo $this->createMobileUrl('pcpay',array('op'=>'doubi','fee'=>30))?>"><ul class="click_op" style="margin:0">
+                <?php  } ?>
+                    <li>
+                        <p class="tit yellow"><label style="width:100px">300<?php  echo $sitem['unit'];?></label><span>￥30</span></p>
+                    </li>
+                    <li style="color:#E2A41F">购买<i class="re_trg"></i></li>
+
+                </ul></a>
+            <?php  } else { ?>
+                <?php  if(is_array($category)) { foreach($category as $c) { ?>
+                    <?php  if($weixin==1) { ?>
+                    <a href="<?php  echo $this->createMobileUrl('pay',array('op'=>'doubi','fee'=>$c['fee']))?>"><ul class="click_op" style="margin:0">
+                    <?php  } else { ?>
+                    <a href="<?php  echo $this->createMobileUrl('pcpay',array('op'=>'doubi','fee'=>$c['fee']))?>"><ul class="click_op" style="margin:0">
+                    <?php  } ?>
+                        <li>
+                            <p class="tit yellow"><label style="width:100px"><?php  echo $c['credit'];?><?php  echo $sitem['unit'];?></label><span><?php  if($c['fee']>0) { ?>￥<?php  echo $c['fee'];?><?php  } else { ?>免费<?php  } ?><?php  if(!empty($sitem['huafei']) && !empty($c['huafei'])) { ?>,送<?php  echo $c['huafei'];?>元话费<?php  } ?></span></p>
+                        </li>
+                        <li style="color:#E2A41F">购买<i class="re_trg"></i></li>
+
+                    </ul></a>
+                <?php  } } ?>
+            <?php  } ?>
+        </div>
+        <p class="click_op_top" style="line-height: 22px;">
+            <i class="bean" style="vertical-align: top;"></i><?php  echo $sitem['doubi'];?>说明<br/>
+            <span>
+                1.<?php  echo $sitem['doubi'];?>为通用虚拟货币，可购买一切增值服务；<br/>
+                2.20个<?php  echo $sitem['unit'];?>就能换取一位异性的永久畅聊权。
+            </span>
+        </p>
+    </section>
+    <?php  if(!empty($cz_list)) { ?>
+        <div class="swiper-container swiper-container-vertical" style="height:250px;margin-top:80px;border-top: 1px #e0e0e0 solid;padding-top:5px;">
+            <div class="swiper-wrapper">
+            <?php  if(is_array($cz_list)) { foreach($cz_list as $c) { ?>
+                <div class="swiper-slide stop-swiping "><span style="color:#fd6b8f">[<?php  echo $c['user'];?>]</span><?php  echo $c['name'];?></div>
+            <?php  } } ?>
+            </div>
+        </div>
+    <?php  } ?>
+</div>
+</body>
+<script src="../addons/jy_ppp/js/zepto.min.js"></script>
+<script src="../addons/jy_ppp/js/public.js"></script>
+<script type="text/javascript">
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 7,
+        direction: 'vertical',
+        speed: 3000,
+        autoplay: 1,
+        loop: true,
+        loopedSlides: 100,
+        noSwiping: true,
+        noSwipingClass: 'stop-swiping',
+        spaceBetween: 1
+    });
+</script>
+<?php (!empty($this) && $this instanceof WeModuleSite) ? (include $this->template('inc/footer', TEMPLATE_INCLUDEPATH)) : (include template('inc/footer', TEMPLATE_INCLUDEPATH));?>
+</html>

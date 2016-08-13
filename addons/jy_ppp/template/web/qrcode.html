@@ -1,0 +1,42 @@
+{template 'common/header'}
+{template 'web/nav'}
+<div class="main">
+
+	<form action="" method="post" class="form-horizontal form"
+		enctype="multipart/form-data">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				统计报表
+			</div>
+			<div class="panel-body">
+
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">默认渠道人数</label>
+					<div class="col-sm-9 col-xs-12">
+						{$moren} 人
+					</div>
+				</div>
+
+				{loop $qrcode $q}
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label"><span style="color:#F1668D;font-weight:bold">【{$q['rulename']}】</span>渠道人数</label>
+					<div class="col-sm-9 col-xs-12">
+						{$q['num']} 人
+					</div>
+				</div>
+				{/loop}
+
+			</div>
+			</div>
+	</form>
+</div>
+
+<script>
+require(['jquery', 'util'], function($, u){
+	$(function(){
+		u.editor($('#rule')[0]);
+		u.editor($('#terms')[0]);
+	});
+});
+</script>

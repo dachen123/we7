@@ -1,0 +1,88 @@
+{template 'common/header'}
+{template 'web/nav'}
+<style>
+.panel-body {
+padding: 10px;
+}
+</style>
+<div class="main">
+	<form action="" id="coll" method="post" class="form-horizontal form" enctype="multipart/form-data">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				添加采集虚拟用户相册
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">采集地址</label>
+					<div class="col-sm-8">
+						{$url}
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">虚拟用户性别</label>
+					<div class="col-sm-5">
+						<label for="enabled1" class="radio-inline"><input type="radio" name="sex" value="1" id="enabled1" {if !empty($sex) && $sex == 1}checked="true"{/if} /> 男</label>
+	                    &nbsp;&nbsp;&nbsp;
+	                    <label for="enabled2" class="radio-inline"><input type="radio" name="sex" value="2" id="enabled2"  {if !empty($sex) && $sex == 2}checked="true"{/if} /> 女</label>	           
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label"></label>
+					<div class="col-sm-5">
+						<input type="button" onclick="return checkfan();" value="全选" >
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">图片</label>
+					<div class="col-sm-5">
+						{if !empty($list)}
+						{loop $list $row}
+						<div class="form-group"><label><img width="150" src="{$row['img']}" />&nbsp;&nbsp;&nbsp;<input type="checkbox" name="img[]" value="{$row['img']}" ></label></div>
+						{/loop}
+						{/if}
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="form-group col-sm-12">
+			<input type="hidden" name="token" value="{$_W['token']}" />
+				<input type="submit" class="btn btn-primary col-lg-1" onclick="return sub()" name="submit" value="提交" />
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+function checkfan(){
+	var $cks = $("#coll input:checkbox");  
+  
+          for (var i = 0; i < $cks.length; i++) {  
+  
+             $cks.get(i).checked = !$cks.get(i).checked;  
+  
+          }  
+}
+function sub(){
+	var $cks = $("#coll input:checkbox");
+	var _y = false;
+	  for (var i = 0; i < $cks.length; i++) {  
+
+		 if($cks.get(i).checked){
+			 _y = true;
+			break;
+		 }  
+
+	  }
+	  if(true!=_y){
+		alert("亲，至少选一个呗");
+		return false;
+	  }
+}
+</script>
+{template 'common/footer'}
