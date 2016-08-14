@@ -21,7 +21,7 @@ if(!empty($setting['payment']['wechat']['switch'])) {
 	$dos[] = 'wechat';
 }
 if(!empty($setting['payment']['delivery']['switch'])) {
-	$dos[] = 'delivery';
+    $dos[] = 'delivery';   /*货到付款*/
 }
 if(!empty($setting['payment']['unionpay']['switch'])) {
 	$dos[] = 'unionpay';
@@ -33,7 +33,7 @@ $do = $_GET['do'];
 $type = in_array($do, $dos) ? $do : '';
 
 if(empty($type)) {
-	message('支付方式错误,请联系商家', '', 'error');
+	// message('支付方式错误,请联系商家', '', 'error');
 }
 if(!empty($type)) {
 	$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `uniacid`=:uniacid AND `module`=:module AND `tid`=:tid';
@@ -299,4 +299,20 @@ if(!empty($type)) {
 		header("location: ../payment/baifubao/pay.php?i={$_W['uniacid']}&auth={$auth}&ps={$sl}");
 		exit();
 	}
+}else{
+
+		if(!empty($plid)) {
+			$tag = array();
+			$tag['acid'] = $_W['acid'];
+			$tag['uid'] = $_W['member']['uid'];
+			pdo_update('core_paylog', array('openid' => $_W['openid'], 'tag' => iserializer($tag)), array('plid' => $plid));
+		}
+		$ps['title'] = urlencode($params['title']);
+		load()->model('payment');
+		load()->func('communication');
+		$sl = base64_encode(json_encode($ps));
+		$auth = sha1($sl . $_W['uniacid'] . $_W['config']['setting']['authkey']);
+		header("location: ../payment/viapay/pay.php?i={$_W['uniacid']}&auth={$auth}&ps={$sl}");
+		exit();
+
 }

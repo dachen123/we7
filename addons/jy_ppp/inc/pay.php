@@ -10,7 +10,7 @@ global $_W,$_GPC;
 		{
 			$weixin=1;
 
-			$weid=$_W['uniacid'];
+			$weid=$_W['uniacid'];  //微擎后台用来标识公众号的id,以绑定时的顺序为准，从1开始
 			$id=$_GPC['id'];
 			$from_user=$_SESSION['jy_openid'];
 			if(empty($id))
@@ -415,7 +415,7 @@ global $_W,$_GPC;
 									$setting = uni_setting($_W['uniacid'], array('payment', 'creditbehaviors'));
 
 									if(!is_array($setting['payment'])) {
-										message('没有有效的支付方式, 请联系网站管理员.');
+										// message('没有有效的支付方式, 请联系网站管理员.');
 									}
 									$params=base64_encode(json_encode($params));
 									echo "<script>
@@ -732,7 +732,7 @@ global $_W,$_GPC;
 								$setting = uni_setting($_W['uniacid'], array('payment', 'creditbehaviors'));
 
 								if(!is_array($setting['payment'])) {
-									message('没有有效的支付方式, 请联系网站管理员.');
+									// message('没有有效的支付方式, 请联系网站管理员.');
 								}
 
 								if (empty($log)) {
@@ -809,7 +809,7 @@ global $_W,$_GPC;
 						$setting = uni_setting($_W['uniacid'], array('payment', 'creditbehaviors'));
 
 						if(!is_array($setting['payment'])) {
-							message('没有有效的支付方式, 请联系网站管理员.');
+							// message('没有有效的支付方式, 请联系网站管理员.');
 						}
 						if (empty($log)) {
 					        $log = array(
