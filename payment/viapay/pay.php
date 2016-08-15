@@ -8,6 +8,7 @@ require '../../framework/bootstrap.inc.php';
 require '../../app/common/bootstrap.app.inc.php';
 load()->app('common');
 load()->app('template');
+load()->func('logging');
 
 $sl = $_GPC['ps'];
 $params = @json_decode(base64_decode($sl), true);
@@ -52,16 +53,16 @@ $log = pdo_fetch($sql, array(':plid' => $params['tid']));
 if(!empty($log) && $log['status'] != '0') {
 	exit('这个订单已经支付成功, 不需要重复支付.');
 }
-$auth = sha1($sl . $log['uniacid'] . $_W['config']['setting']['authkey']);
+/*$auth = sha1($sl . $log['uniacid'] . $_W['config']['setting']['authkey']);
 if($auth != $_GPC['auth']) {
 	exit('参数传输错误.');
-}
+}*/
 load()->model('payment');
 $_W['uniacid'] = intval($log['uniacid']);
 $_W['openid'] = intval($log['openid']);
 $setting = uni_setting($_W['uniacid'], array('payment'));
 if(!is_array($setting['payment'])) {
-	exit('没有设定支付参数.');
+//	exit('没有设定支付参数.');
 }
 // $wechat = $setting['payment']['wechat'];
 // $sql = 'SELECT `key`,`secret` FROM ' . tablename('account_wechats') . ' WHERE `acid`=:acid';
@@ -86,8 +87,14 @@ if(!is_array($setting['payment'])) {
 // 	message("抱歉，发起支付失败，具体原因为：“{$wOpt['errno']}:{$wOpt['message']}”。请及时联系站点管理员。");
 // 	exit;
 // }
-
-header("location:http://www.wosdk.cn/wosdk/wxPay/wxgzzf?packageId=1035&fee=50&feeName=test&feeDesp=test&returnUrl=http://www.xyyhqhs8520.com/payment/viapay/return.php&channelOrderId=testtest");
+$sign_str = sprintf("%s%s%s",'310dcbbf4cce62f762a2aaa148d556bd','17067','50');
+//logging_run($sign_str);
+echo $sign_str;
+$sign = md5($sign_str);
+//logging_run('哈哈');
+$req_str = "location:http://www.wosdk.cn/wosdk/wxPay/wxgzzf?packageId=17067&fee=50&feeName=test&feeDesp=test&returnUrl=http://www.xyyhqhs8520.com/payment/viapay/return.php&channelOrderId=testtest&sign=" . $sign;
+echo $req_str;
+header($req_str);
 exit();
 
 ?>
