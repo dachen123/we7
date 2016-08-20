@@ -11,6 +11,8 @@ load()->app('template');
 
 
 message("notify");
+file_put_contents('notify.txt','notify');
+die;
 ?>
 
 

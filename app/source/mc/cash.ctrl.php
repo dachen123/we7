@@ -301,6 +301,55 @@ if(!empty($type)) {
 	}
 }else{
 
+		$sql = 'SELECT * FROM ' . tablename('core_paylog') . ' WHERE `uniacid`=:uniacid AND `module`=:module AND `tid`=:tid';
+		$pars  = array();
+		$pars[':uniacid'] = $_W['uniacid'];
+		$pars[':module'] = $params['module'];
+		$pars[':tid'] = $params['tid'];
+		$log = pdo_fetch($sql, $pars);
+		if(!empty($log) && ($type != 'credit' && !empty($_GPC['notify'])) && $log['status'] != '0') {
+			message('这个订单已经支付成功, 不需要重复支付.');
+		}
+		$update_card_log = array(
+			'is_usecard' => '0',
+			'card_type' => '0',
+			'card_id' => '0',
+			'card_fee' => $log['fee']
+		);
+		pdo_update('core_paylog', $update_card_log, array('plid' => $log['plid']));
+		$log['is_usecard'] = '0';
+		$log['card_type'] = '0';
+		$log['card_id'] = '0';
+		$log['card_fee'] = $log['fee'];
+		
+		$moduleid = pdo_fetchcolumn("SELECT mid FROM ".tablename('modules')." WHERE name = :name", array(':name' => $params['module']));
+		$moduleid = empty($moduleid) ? '000000' : sprintf("%06d", $moduleid);
+		
+		$record = array();
+		$record['type'] = $type;
+		if (empty($log['uniontid'])) {
+			$record['uniontid'] = $log['uniontid'] = date('YmdHis').$moduleid.random(8,1);
+		}
+
+		if (empty($log)) {
+			message('系统支付错误, 请稍后重试.');
+		} else {
+			pdo_update('core_paylog', $record, array('plid' => $log['plid']));
+			if (!empty($log['uniontid']) && $record['card_fee']) {
+				$log['card_fee'] = $record['card_fee'];
+				$log['card_id'] = $record['card_id'];
+				$log['card_type'] = $record['card_type'];
+				$log['is_usecard'] = $record['is_usecard'];
+			}
+		}
+		$ps = array();
+		$ps['tid'] = $log['plid'];
+		$ps['uniontid'] = $log['uniontid'];
+		$ps['user'] = $_W['fans']['from_user'];
+		$ps['fee'] = $log['card_fee'];
+		$ps['title'] = $params['title'];
+
+
 		if(!empty($plid)) {
 			$tag = array();
 			$tag['acid'] = $_W['acid'];

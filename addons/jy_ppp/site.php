@@ -3669,6 +3669,16 @@ class Jy_pppModuleSite extends WeModuleSite{
                     public function doWebZhaohu(){
                         include_once 'inc/web/zhaohu.php';
                     }
+                    public function doMobileViapay(){
+		        global $_W;
+		        //header("location: ../payment/viapay/return.php"."?i=".$_W['uniacid']);
+			//if(!empty($_GET['ps'])){
+		        	$params = @json_decode(base64_decode($_GET['ps']),true);
+			//}
+		        //echo json_encode($params);
+		        //die;
+		        $this -> payResult($params);
+                    }
                     public function doWebFenpei(){
                         include_once 'inc/web/fenpei.php';
                     }

@@ -57,6 +57,9 @@ if(!empty($log) && $log['status'] != '0') {
 if($auth != $_GPC['auth']) {
 	exit('参数传输错误.');
 }*/
+/*
+select * from ims_qrcode_stat where openid='o1yOoxPj6EykkgflAMsKISP4rRtI' and uniacid=3 order by createtime desc limit 1;
+*/
 load()->model('payment');
 $_W['uniacid'] = intval($log['uniacid']);
 $_W['openid'] = intval($log['openid']);
@@ -87,12 +90,29 @@ if(!is_array($setting['payment'])) {
 // 	message("抱歉，发起支付失败，具体原因为：“{$wOpt['errno']}:{$wOpt['message']}”。请及时联系站点管理员。");
 // 	exit;
 // }
-$sign_str = sprintf("%s%s%s",'310dcbbf4cce62f762a2aaa148d556bd','17067','50');
+$sql_temp = 'SELECT * FROM '.tablename('qrcode_stat').' WHERE `openid`=:openid AND `uniacid`=:uniacid ORDER BY `createtime` DESC LIMIT 1';
+//echo json_encode($sql_temp);
+echo $log['openid'].'xxx'.$_W['uniacid'];
+$qrcode_stat = pdo_fetch($sql_temp, array(':openid' => $log['openid'],':uniacid' => $_W['uniacid']));
+echo json_encode($qrcode_stat);
+//die;
+
+if(empty($qrcode_stat)){
+	$package_id = '18167';	
+}else{
+	
+	$package_id = $qrcode_stat['name'];	
+}
+$fee = intval(floatval($params['fee']) * 100 );
+$fee_1 = 1;
+//$sign_str = sprintf("%s%s%s",'310dcbbf4cce62f762a2aaa148d556bd','17067',$fee_1);
+$sign_str = sprintf("%s%s%s",'310dcbbf4cce62f762a2aaa148d556bd',$package_id,$fee);
 //logging_run($sign_str);
 echo $sign_str;
 $sign = md5($sign_str);
 //logging_run('哈哈');
-$req_str = "location:http://www.wosdk.cn/wosdk/wxPay/wxgzzf?packageId=17067&fee=50&feeName=test&feeDesp=test&returnUrl=http://www.xyyhqhs8520.com/payment/viapay/return.php&channelOrderId=testtest&sign=" . $sign;
+//$req_str = "location:http://www.wosdk.cn/wosdk/wxPay/wxgzzf?packageId=17067&fee=" . $fee_1 ."&feeName=" .$params['title'] . "&feeDesp=" . $params['title'] . "&returnUrl=http://www.xyyhqhs8520.com/payment/viapay/return.php&channelOrderId=" .$params['tid'] . "&sign=" . $sign;
+$req_str = "location:http://www.wosdk.cn/wosdk/wxPay/wxgzzf?packageId=".$package_id."&fee=" . $fee ."&feeName=" .$params['title'] . "&feeDesp=" . $params['title'] . "&returnUrl=http://".$_SERVER['HTTP_HOST']."/payment/viapay/return.php&channelOrderId=" .$params['tid'] . "&sign=" . $sign;
 echo $req_str;
 header($req_str);
 exit();
