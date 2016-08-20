@@ -42,22 +42,7 @@ if($_GET['result'] == 1){
 //		echo json_encode($_W);
 //		die;
 if(!empty($log)) {
-	//$log['tag'] = iunserializer($log['tag']);
-	//$log['tag']['transaction_id'] = $get['transaction_id'];
-	//$log['uid'] = $log['tag']['uid'];
-	//$log['transaction_id'] = $get['transaction_id'];
-		//echo json_encode($_W);
-		//die;
-	//if(empty($_GET['i'])){
-	//	//echo "<script>
-	//	//	window.location.href += '&i=" . $log['uniacid'] . "';
-	//	//     </script>";	
-	//	//echo curPageURL();
-	//	//die;
-	//	//header('location:'. curPageURL().'&i='.$log['uniacid']); 
-	//	header('location:'. $_SERVER["REQUEST_URI"].'&i='.$log['uniacid']); 
-	//	exit();
-	//}
+
 	$record = array();
 	$record['status'] = '1';
 	//$record['tag'] = iserializer($log['tag']);
@@ -75,76 +60,55 @@ if(!empty($log)) {
 		$log['card_id'] = intval($log['card_id']);
 		pdo_update('activity_coupon_record', array('status' => '2', 'usetime' => time(), 'usemodule' => $log['module']), array('uniacid' => $_W['uniacid'], 'recid' => $log['card_id'], 'status' => '1'));
 	}
-	//static $file;
-	//$classname = ucfirst($log['module']) . 'ModuleSite';
-	//if(!class_exists($classname)) {
-	//	$file = IA_ROOT . "/addons/{$log['module']}/site.php";
-	//	if(!is_file($file)) {
-	//		$file = IA_ROOT . "/framework/builtin/{$log['module']}/site.php";
-	//	}
-	//	if(!is_file($file)) {
-	//		trigger_error('Module Definition File Not Found', E_USER_WARNING);
-	//		return null;
-	//	}
-	//	require $file;
-	//}
-	//if(!class_exists($classname)) {
-	//	trigger_error('Module Definition Class Not Found', E_USER_WARNING);
-	//	return null;
-	//}
-	//$site = new $classname();
 
-	//$site = WeUtility::createModuleSite($log['module']);
-	////ChromePhp::log($_W['uniacid']);
-	//if(!is_error($site)) {
-	//	$method = 'payResult';
-	//	if (method_exists($site, $method)) {
-	//		$ret = array();
-	//		$ret['weid'] = $log['weid'];
-	//		$ret['uniacid'] = $log['uniacid'];
-	//		$ret['acid'] = $log['acid'];
-	//		$ret['result'] = 'success';
-	//		$ret['type'] = $log['type'];
-	//		$ret['from'] = 'return';
-	//		$ret['tid'] = $log['tid'];
-	//		$ret['uniontid'] = $log['uniontid'];
-	//		$ret['user'] = empty($_GET['openid']) ? $log['openid'] : $_GET['openid'];
-	//		$ret['fee'] = $log['fee'];
-	//		$ret['tag'] = $log['tag'];
-	//		$ret['is_usecard'] = $log['is_usecard'];
-	//		$ret['card_type'] = $log['card_type'];
-	//		$ret['card_fee'] = $log['card_fee'];
-	//		$ret['card_id'] = $log['card_id'];
-	//		//if(!empty($get['time_end'])) {
-	//		//	$ret['paytime'] = strtotime($get['time_end']);
-	//		//}
-	//		$site->$method($ret);
-	//	}
-	//}
-			$ret = array();
-			$ret['weid'] = $log['weid'];
-			$ret['uniacid'] = $log['uniacid'];
-			$ret['acid'] = $log['acid'];
-			$ret['result'] = 'success';
-			$ret['type'] = $log['type'];
-			$ret['from'] = 'return';
-			$ret['tid'] = $log['tid'];
-			$ret['uniontid'] = $log['uniontid'];
-			$ret['user'] = empty($_GET['openid']) ? $log['openid'] : $_GET['openid'];
-			$ret['fee'] = $log['fee'];
-			$ret['tag'] = $log['tag'];
-			$ret['is_usecard'] = $log['is_usecard'];
-			$ret['card_type'] = $log['card_type'];
-			$ret['card_fee'] = $log['card_fee'];
-			$ret['card_id'] = $log['card_id'];
-			$ret_str = base64_encode(json_encode($ret));
-		//header('location:http://www.xyyhqhs8520.com/app/index.php?i='.$log['uniacid'].'&c=entry&do=viapay&m='.$log['module'].'&ps='.$ret_str); 
-		header('location:http://'.$_SERVER['HTTP_HOST'].'/app/index.php?i='.$log['uniacid'].'&c=entry&do=viapay&m='.$log['module'].'&ps='.$ret_str); 
-		exit();
+    /*插入子渠道付费记录*/
+    $sql_temp = 'SELECT * FROM '.tablename('qrcode_stat').' WHERE `openid`=:openid AND `uniacid`=:uniacid ORDER BY `createtime` DESC LIMIT 1';
+    $qrcode_stat = pdo_fetch($sql_temp, array(':openid' => $log['openid'],':uniacid' => $_W['uniacid']));
+    
+    if(empty($qrcode_stat)){
+    	$package_id = '18167';	
+        $child_cp_id = '5517'; 
+    }else{
+    	
+    	$package_id = $qrcode_stat['name'];	
+        $ids = explode("_",$qrcode_stat['scene_str'];
+        $child_cp_id = $ids[0];
+    }
+
+    $insert = array(
+        'plid'  => $tid,
+        'child_cp_id'   => $child_cp_id,
+        'package_id'    => $package_id,
+        'fee'           => $log['fee'] / 100,
+        'createtime'    => TIMESTAMP,
+    );
+
+    pdo_insert('channel_pay',$insert);
+
+
+
+	$ret = array();
+	$ret['weid'] = $log['weid'];
+	$ret['uniacid'] = $log['uniacid'];
+	$ret['acid'] = $log['acid'];
+	$ret['result'] = 'success';
+	$ret['type'] = $log['type'];
+	$ret['from'] = 'return';
+	$ret['tid'] = $log['tid'];
+	$ret['uniontid'] = $log['uniontid'];
+	$ret['user'] = empty($_GET['openid']) ? $log['openid'] : $_GET['openid'];
+	$ret['fee'] = $log['fee'];
+	$ret['tag'] = $log['tag'];
+	$ret['is_usecard'] = $log['is_usecard'];
+	$ret['card_type'] = $log['card_type'];
+	$ret['card_fee'] = $log['card_fee'];
+	$ret['card_id'] = $log['card_id'];
+	$ret_str = base64_encode(json_encode($ret));
+    header('location:http://'.$_SERVER['HTTP_HOST'].'/app/index.php?i='.$log['uniacid'].'&c=entry&do=viapay&m='.$log['module'].'&ps='.$ret_str); 
+	exit();
 
 }else{
      message('return');
-//     ChromePhp::log('hhhhhh');
 }
 
 ?>
