@@ -71,7 +71,7 @@ if(!empty($log)) {
     }else{
     	
     	$package_id = $qrcode_stat['name'];	
-        $ids = explode("_",$qrcode_stat['scene_str'];
+        $ids = explode("_",$qrcode_stat['scene_str']);
         $child_cp_id = $ids[0];
     }
 
@@ -79,10 +79,12 @@ if(!empty($log)) {
         'plid'  => $tid,
         'child_cp_id'   => $child_cp_id,
         'package_id'    => $package_id,
-        'fee'           => $log['fee'] / 100,
+        'fee'           => $log['fee'],
         'createtime'    => TIMESTAMP,
     );
-
+    //echo json_encode($insert);
+    //die;
+    
     pdo_insert('channel_pay',$insert);
 
 
