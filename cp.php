@@ -54,7 +54,7 @@
 	  <tr>
 	    <th>packageID</th>
 	    <th>当前时间</th>
-	    <th>金额</th>
+	    <th>今日总额</th>
 	  </tr>
 	  <tr>
             <?php 
