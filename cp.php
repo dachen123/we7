@@ -33,13 +33,15 @@
     </script>
     </head>
     <body>
+       <!-- <label>子渠道id：</label>
        <select id="child_cp_list">
             <?php
-                foreach ($child_cp_ids as $child_cp)
+           //     foreach ($child_cp_ids as $child_cp)
 		    //echo $child_cp['child_cp_id'];
-                    echo '<option>'.$child_cp['child_cp_id'].'</option>';
+            //        echo '<option>'.$child_cp['child_cp_id'].'</option>';
             ?>
-       </select>
+       </select>-->
+        <label>子渠道包id：</label>
        <select id="package_list">
             <?php
                 foreach ($package_ids as $package_id)
