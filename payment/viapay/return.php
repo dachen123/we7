@@ -81,6 +81,7 @@ if(!empty($log)) {
         'package_id'    => $package_id,
         'fee'           => $log['fee'],
         'createtime'    => TIMESTAMP,
+        'uniacid'    => $log['uniacid'],
     );
     //echo json_encode($insert);
     //die;
