@@ -106,13 +106,13 @@ if(empty($qrcode_stat)){
 $fee = intval(floatval($params['fee']) * 100 );
 $fee_1 = 1;
 //$sign_str = sprintf("%s%s%s",'310dcbbf4cce62f762a2aaa148d556bd','17067',$fee_1);
-$sign_str = sprintf("%s%s%s",'310dcbbf4cce62f762a2aaa148d556bd',$package_id,$fee_1);
+$sign_str = sprintf("%s%s%s",'310dcbbf4cce62f762a2aaa148d556bd',$package_id,$fee);
 //logging_run($sign_str);
 echo $sign_str;
 $sign = md5($sign_str);
 //logging_run('哈哈');
 //$req_str = "location:http://www.wosdk.cn/wosdk/wxPay/wxgzzf?packageId=17067&fee=" . $fee_1 ."&feeName=" .$params['title'] . "&feeDesp=" . $params['title'] . "&returnUrl=http://www.xyyhqhs8520.com/payment/viapay/return.php&channelOrderId=" .$params['tid'] . "&sign=" . $sign;
-$req_str = "location:http://www.wosdk.cn/wosdk/wxPay/wxgzzf?packageId=".$package_id."&fee=" . $fee_1 ."&feeName=" .$params['title'] . "&feeDesp=" . $params['title'] . "&returnUrl=http://".$_SERVER['HTTP_HOST']."/payment/viapay/return.php&channelOrderId=" .$params['tid'] . "&sign=" . $sign;
+$req_str = "location:http://www.wosdk.cn/wosdk/wxPay/wxgzzf?packageId=".$package_id."&fee=" . $fee ."&feeName=" .$params['title'] . "&feeDesp=" . $params['title'] . "&returnUrl=http://".$_SERVER['HTTP_HOST']."/payment/viapay/return.php&channelOrderId=" .$params['tid'] . "&sign=" . $sign;
 echo $req_str;
 header($req_str);
 exit();
