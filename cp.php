@@ -63,7 +63,10 @@
         $sql_temp2 = 'select sum(fee) as `sum` from '.tablename('channel_pay').'where uniacid='.$uniacid.$fs_child_cp.$fs_agent.$fs_package;
         $total_sum = pdo_fetch($sql_temp2);
 
-        $sql_subscribe = 'select count(*) as `count` from '.tablename('qrcode_stat').'where uniacid='.$uniacid.' and `scene_str` like '.$fs_scene_str;
+        $sql_subscribe_by_date = 'select count(*) as `count` from '.tablename('qrcode_stat').' where uniacid='.$uniacid.' and `scene_str` like "'.$fs_scene_str.'" and (createtime > :begin_time and createtime <= :end_time) and `type`=2';
+	$count_by_date = pdo_fetch($sql_subscribe_by_date,array(':begin_time' => $begin_time,':end_time' => $end_time));
+	$sql_subscribe_all = 'select count(*) as `count` from '.tablename('qrcode_stat').'where uniacid='.$uniacid.' and `scene_str` like "'.$fs_scene_str.'" and `type`=2';
+	$count_all = pdo_fetch($sql_subscribe_all);
     }
 
 ?>
@@ -126,8 +129,8 @@
 	                echo '<td>'.$_GET['begin_date'].' ~ '.$_GET['end_date'].'</td>';
 	                echo '<td>'.$today_sum['sum'].'</td>';
 	                echo '<td>'.$total_sum['sum'].'</td>';
-	                echo '<td>'.$total_sum['sum'].'</td>';
-	                echo '<td>'.$total_sum['sum'].'</td>';
+	                echo '<td>'.$count_by_date['count'].'</td>';
+	                echo '<td>'.$count_all['count'].'</td>';
 
                 }
             ?>
