@@ -68,11 +68,13 @@ if(!empty($log)) {
     if(empty($qrcode_stat)){
     	$package_id = '18167';	
         $child_cp_id = '5517'; 
+        $agent_id = '5516'; 
     }else{
     	
     	$package_id = $qrcode_stat['name'];	
         $ids = explode("_",$qrcode_stat['scene_str']);
-        $child_cp_id = $ids[0];
+        $agent_id = $ids[0];
+        $child_cp_id = $ids[1];
     }
 
     $insert = array(
@@ -82,6 +84,7 @@ if(!empty($log)) {
         'fee'           => $log['fee'],
         'createtime'    => TIMESTAMP,
         'uniacid'    => $log['uniacid'],
+        'agent_id'    => $agent_id,
     );
     //echo json_encode($insert);
     //die;
