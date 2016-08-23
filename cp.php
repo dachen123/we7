@@ -1,7 +1,9 @@
 <?php
     require './framework/bootstrap.inc.php';
-    $qr_sql = 'select * from '.tablename('qrcode_stat');
+    $qr_sql = 'select * from '.tablename('qrcode').' where uniacid=3';
     $qrcodes = pdo_fetchall($qr_sql);
+	//print_r( $qrcodes);
+	//die;
     foreach ($qrcodes as $qrcode){
         $ids = explode("_",$qrcode['scene_str']);
         $agent_list[] = $ids[0];
