@@ -1,6 +1,7 @@
 <?php
+    $uniacid = 3;
     require './framework/bootstrap.inc.php';
-    $qr_sql = 'select * from '.tablename('qrcode').' where uniacid=3';
+    $qr_sql = 'select * from '.tablename('qrcode').' where uniacid='.$uniacid;
     $qrcodes = pdo_fetchall($qr_sql);
 	//print_r( $qrcodes);
 	//die;
@@ -14,27 +15,56 @@
         $uni_package_list = array_unique($package_list);
     }
 
-    // $sql = 'select distinct `child_cp_id` from '.tablename('channel_pay').'where `uniacid`=3';
-    // $child_cp_ids = pdo_fetchall($sql);
-    // //die;
-    //
-    // $sql = 'select distinct package_id from '.tablename('channel_pay').'where `uniacid`=3';
-    // $package_ids = pdo_fetchall($sql);
-    //
-    // $sql_temp = 'select sum(fee) as `sum` from '.tablename('channel_pay').'where uniacid=3 and (createtime > :begin_time and createtime <= :now_time) and package_id=:package_id';
-    // //获取当天的年份
-    // $y = date("Y");
-    // //获取当天的月份
-    // $m = date("m");
-    // //获取当天的号数
-    // $d = date("d");
-    // //将今天开始的年月日时分秒，转换成unix时间戳(开始示例：2015-10-12 00:00:00)
-    // $todayTime= mktime(0,0,0,$m,$d,$y);//即是当天零点的时间戳
-    //
-    // $now_time = time();
-    // $today_sum = pdo_fetch($sql_temp,array(':begin_time' => $todayTime,':now_time' => $now_time,'package_id' => $_GET['package_id']));
-    // $sql_temp2 = 'select sum(fee) as `sum` from '.tablename('channel_pay').'where uniacid=3 and package_id=:package_id';
-    // $total_sum = pdo_fetch($sql_temp2,array('package_id' => $_GET['package_id']));
+    if ($_GET['child_cp_id']){
+        if ($_GET['child_cp_id'] == '全部'){
+            $fs_child_cp = ''; 
+            if ($_GET['child_cp_id'] != '全部'){
+                $fs_scene_str = $_GET['agent_id'].'_%';
+            }
+        }else{
+        
+            $fs_child_cp = ' and child_cp_id='.$_GET['child_cp_id']; 
+    }
+    if ($_GET['package_id'] == '全部'){
+        $fs_package = ''; 
+        if ($_GET['child_cp_id'] != '全部' && $_GET['agent_id'] != '全部'){
+            $fs_scene_str = $_GET['agent_id'].'_'.$_GET['child_cp_id'].'_%';
+        }
+    }else{
+    
+        $fs_package = ' and package_id='.$_GET['package_id']; 
+    }
+    if ($_GET['agent_id'] == '全部'){
+        $fs_agent = ''; 
+        $fs_scene_str = '%';
+    }else{
+    
+        $fs_agent = ' and agent_id='.$_GET['agent_id']; 
+    }
+    if($_GET['package_id'] != '全部' && $_GET['agent_id'] != '全部' && $_GET['child_cp_id'] != '全部'){
+        $fs_scene_str = $_GET['agent_id'].'_'.$_GET['child_cp_id'].'_'.$_GET['package_id'];
+    }
+
+        $sql_temp = 'select sum(fee) as `sum` from '.tablename('channel_pay').'where uniacid='.$uniacid.' and (createtime > :begin_time and createtime <= :end_time) '.$fs_child_cp.$fs_agent.$fs_package;
+        //获取当天的年份
+        //$y = date("Y");
+        ////获取当天的月份
+        //$m = date("m");
+        ////获取当天的号数
+        //$d = date("d");
+        ////将今天开始的年月日时分秒，转换成unix时间戳(开始示例：2015-10-12 00:00:00)
+        //$todayTime= mktime(0,0,0,$m,$d,$y);//即是当天零点的时间戳
+        //$now_time = time();
+        $begin_time = strtotime($_GET['begin_date'].' 00:00:00');
+        $end_time = strtotime($_GET['end_date'].' 23:59:59');
+        
+
+        $today_sum = pdo_fetch($sql_temp,array(':begin_time' => $begin_time,':end_time' => $end_time));
+        $sql_temp2 = 'select sum(fee) as `sum` from '.tablename('channel_pay').'where uniacid='.$uniacid.$fs_child_cp.$fs_agent.$fs_package;
+        $total_sum = pdo_fetch($sql_temp2);
+
+        $sql_subscribe = 'select count(*) as `count` from '.tablename('qrcode_stat').'where uniacid='.$uniacid.' and `scene_str` like '.$fs_scene_str;
+    }
 
 ?>
 <html>
@@ -84,20 +114,22 @@
 	<br/>
 	<table border="1">
 	  <tr>
-	    <th>当日时间</th>
-	    <th>packageID</th>
-	    <th>今日充值</th>
+	    <th>时间</th>
 	    <th>累计充值</th>
+	    <th>充值总和</th>
+	    <th>累计关注</th>
+	    <th>关注总量</th>
 	  </tr>
 	  <tr>
             <?php 
-                // if(!empty($_GET['package_id'])){
-	            //     echo '<td>'.date('Y-m-d H:i:s',time()).'</td>';
-	            //     echo '<td>'.$_GET['package_id'].'</td>';
-	            //     echo '<td>'.$today_sum['sum'].'</td>';
-	            //     echo '<td>'.$total_sum['sum'].'</td>';
-                //
-                // }
+                if(!empty($_GET['package_id'])){
+	                echo '<td>'.$_GET['begin_date'].' ~ '.$_GET['end_date'].'</td>';
+	                echo '<td>'.$today_sum['sum'].'</td>';
+	                echo '<td>'.$total_sum['sum'].'</td>';
+	                echo '<td>'.$total_sum['sum'].'</td>';
+	                echo '<td>'.$total_sum['sum'].'</td>';
+
+                }
             ?>
 	  </tr>
 	</table>
