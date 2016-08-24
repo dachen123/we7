@@ -67,6 +67,14 @@
 	$count_by_date = pdo_fetch($sql_subscribe_by_date,array(':begin_time' => $begin_time,':end_time' => $end_time));
 	$sql_subscribe_all = 'select count(*) as `count` from '.tablename('qrcode_stat').'where uniacid='.$uniacid.' and `scene_str` like "'.$fs_scene_str.'" and `type`=2';
 	$count_all = pdo_fetch($sql_subscribe_all);
+        $sql_unsubscrib_by_date = 'select count(*) as `count` from (select * from ims_qrcode_stat where uniacid='.$uniacid.' and type=2) as a join (select * from ims_stat_msg_history where uniacid='.$uniacid.' and type="unsubscrib") as b on a.openid=b.from_user where b.createtime > :begin_time and b.createtime <= :end_time';
+        $sql_unsubscrib_all = 'select count(*) as `count` from (select * from ims_qrcode_stat where uniacid='.$uniacid.' and type=2) as a join (select * from ims_stat_msg_history where uniacid='.$uniacid.' and type="unsubscrib") as b on a.openid=b.from_user';
+        $unsubscrib_count_by_date = pdo_fetch($sql_unsubscrib_by_date,array(':begin_time' => $begin_time,':end_time' => $end_time));
+        $unsubscrib_count_all = pdo_fetch($sql_unsubscrib_all);
+        //print_r( $unsubscrib_count_by_date);
+        //print_r( $unsubscrib_count_all);
+	//echo $unsubscrib_count_by_date['count'];
+        //die;
     }
 
 ?>
@@ -84,7 +92,7 @@
          }
     </script>
     </head>
-    <body>
+    <body align="center">
        <label>代理商ID：</label>
        <select id="agent_list">
             <?php
@@ -114,28 +122,34 @@
         <label>结束日期:</label>
         <input type="date" id="end_date" value="<?php echo date('Y-m-d',time())?>"></input>
        <button id='search' onclick="searchFun()"> 查询</button>
-	<br/>
+	<div align="center">
 	<table border="1">
 	  <tr>
 	    <th>时间</th>
 	    <th>累计充值</th>
-	    <th>充值总和</th>
+	    <!--<th>充值总和</th>-->
 	    <th>累计关注</th>
-	    <th>关注总量</th>
+	    <!--<th>关注总量</th>-->
+	    <th>累计取消关注</th>
+	    <!--<th>取消关注总量</th>-->
+
 	  </tr>
 	  <tr>
             <?php 
                 if(!empty($_GET['package_id'])){
 	                echo '<td>'.$_GET['begin_date'].' ~ '.$_GET['end_date'].'</td>';
 	                echo '<td>'.$today_sum['sum'].'</td>';
-	                echo '<td>'.$total_sum['sum'].'</td>';
+	                //echo '<td>'.$total_sum['sum'].'</td>';
 	                echo '<td>'.$count_by_date['count'].'</td>';
-	                echo '<td>'.$count_all['count'].'</td>';
+	                //echo '<td>'.$count_all['count'].'</td>';
+	                echo '<td>'.$unsubscrib_count_by_date['count'].'</td>';
+	                //echo '<td>'.$unsubscrib_count_all['count'].'</td>';
 
                 }
             ?>
 	  </tr>
 	</table>
+	</div>
 
     </body> 
 </html>
