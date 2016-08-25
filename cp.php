@@ -16,30 +16,43 @@
     }
 
     if ($_GET['child_cp_id']){
+	echo '<script>
+		document.getElementById("child_cp_list").value = '.$_GET['child_cp_id'].';	
+	</script>';
+
+    	$fs_scene_str = '';
+    	if ($_GET['agent_id'] == '全部'){
+    	    $fs_agent = ''; 
+    	    $fs_scene_str = '%';
+    	}else{
+    	
+    	    $fs_agent = ' and agent_id='.$_GET['agent_id']; 
+    	}
         if ($_GET['child_cp_id'] == '全部'){
             $fs_child_cp = ''; 
-            if ($_GET['child_cp_id'] != '全部'){
-                $fs_scene_str = $_GET['agent_id'].'_%';
-            }
+	    if( empty($fs_scene_str)){
+            	if ($_GET['agent_id'] != '全部'){
+            	    $fs_scene_str = $_GET['agent_id'].'_%';
+            	}else{
+            	    $fs_scene_str = '%';
+	    	}
+	    }
         }else{
         
             $fs_child_cp = ' and child_cp_id='.$_GET['child_cp_id']; 
     }
     if ($_GET['package_id'] == '全部'){
         $fs_package = ''; 
-        if ($_GET['child_cp_id'] != '全部' && $_GET['agent_id'] != '全部'){
-            $fs_scene_str = $_GET['agent_id'].'_'.$_GET['child_cp_id'].'_%';
-        }
+	if( empty($fs_scene_str)){
+        	if ($_GET['child_cp_id'] != '全部' && $_GET['agent_id'] != '全部'){
+        	    $fs_scene_str = $_GET['agent_id'].'_'.$_GET['child_cp_id'].'_%';
+        	}else{
+        		$fs_scene_str = '%';
+		}
+	}
     }else{
     
         $fs_package = ' and package_id='.$_GET['package_id']; 
-    }
-    if ($_GET['agent_id'] == '全部'){
-        $fs_agent = ''; 
-        $fs_scene_str = '%';
-    }else{
-    
-        $fs_agent = ' and agent_id='.$_GET['agent_id']; 
     }
     if($_GET['package_id'] != '全部' && $_GET['agent_id'] != '全部' && $_GET['child_cp_id'] != '全部'){
         $fs_scene_str = $_GET['agent_id'].'_'.$_GET['child_cp_id'].'_'.$_GET['package_id'];
@@ -63,18 +76,34 @@
         $sql_temp2 = 'select sum(fee) as `sum` from '.tablename('channel_pay').'where uniacid='.$uniacid.$fs_child_cp.$fs_agent.$fs_package;
         $total_sum = pdo_fetch($sql_temp2);
 
-        $sql_subscribe_by_date = 'select count(*) as `count` from '.tablename('qrcode_stat').' where uniacid='.$uniacid.' and `scene_str` like "'.$fs_scene_str.'" and (createtime > :begin_time and createtime <= :end_time) and `type`=2';
+        $sql_subscribe_by_date = 'select count(*) as `count` from '.tablename('qrcode_stat').' where uniacid='.$uniacid.' and `scene_str` like "'.$fs_scene_str.'" and (createtime > :begin_time and createtime <= :end_time) and `type`=1';
+	//echo $sql_subscribe_by_date;
+	//die;
 	$count_by_date = pdo_fetch($sql_subscribe_by_date,array(':begin_time' => $begin_time,':end_time' => $end_time));
-	$sql_subscribe_all = 'select count(*) as `count` from '.tablename('qrcode_stat').'where uniacid='.$uniacid.' and `scene_str` like "'.$fs_scene_str.'" and `type`=2';
+	$sql_subscribe_all = 'select count(*) as `count` from '.tablename('qrcode_stat').'where uniacid='.$uniacid.' and `scene_str` like "'.$fs_scene_str.'" and `type`=1';
 	$count_all = pdo_fetch($sql_subscribe_all);
-        $sql_unsubscrib_by_date = 'select count(*) as `count` from (select * from ims_qrcode_stat where uniacid='.$uniacid.' and type=2) as a join (select * from ims_stat_msg_history where uniacid='.$uniacid.' and type="unsubscrib") as b on a.openid=b.from_user where b.createtime > :begin_time and b.createtime <= :end_time';
-        $sql_unsubscrib_all = 'select count(*) as `count` from (select * from ims_qrcode_stat where uniacid='.$uniacid.' and type=2) as a join (select * from ims_stat_msg_history where uniacid='.$uniacid.' and type="unsubscrib") as b on a.openid=b.from_user';
+        $sql_unsubscrib_by_date = 'select count(*) as `count` from (select * from ims_qrcode_stat where uniacid='.$uniacid.' and type=1) as a join (select * from ims_stat_msg_history where uniacid='.$uniacid.' and type="unsubscrib") as b on a.openid=b.from_user where b.createtime > :begin_time and b.createtime <= :end_time';
+        $sql_unsubscrib_all = 'select count(*) as `count` from (select * from ims_qrcode_stat where uniacid='.$uniacid.' and type=1) as a join (select * from ims_stat_msg_history where uniacid='.$uniacid.' and type="unsubscrib") as b on a.openid=b.from_user';
         $unsubscrib_count_by_date = pdo_fetch($sql_unsubscrib_by_date,array(':begin_time' => $begin_time,':end_time' => $end_time));
         $unsubscrib_count_all = pdo_fetch($sql_unsubscrib_all);
         //print_r( $unsubscrib_count_by_date);
         //print_r( $unsubscrib_count_all);
 	//echo $unsubscrib_count_by_date['count'];
         //die;
+	$fee_sum = intval($today_sum['sum']);
+	//echo intval($fee_sum * 0.7)/50;
+	//die;
+	if ($fee_sum > 200){
+		$fee_sum = intval(intval($fee_sum * 0.75 / 50) * 50);
+	}
+	$subcrib_count = intval($count_by_date['count']);
+	if ($subcrib_count > 30){
+		$subcrib_count = intval($subcrib_count * 0.7);	
+	}
+	$unsubcrib_count = intval($unsubscrib_count_by_date['count']);
+	if ($unsubcrib_count > 30){
+		$unsubcrib_count = intval($unsubcrib_count * 0.7);
+	}
     }
 
 ?>
@@ -138,11 +167,11 @@
             <?php 
                 if(!empty($_GET['package_id'])){
 	                echo '<td>'.$_GET['begin_date'].' ~ '.$_GET['end_date'].'</td>';
-	                echo '<td>'.$today_sum['sum'].'</td>';
+	                echo '<td>'.$fee_sum.'</td>';
 	                //echo '<td>'.$total_sum['sum'].'</td>';
-	                echo '<td>'.$count_by_date['count'].'</td>';
+	                echo '<td>'.$subcrib_count.'</td>';
 	                //echo '<td>'.$count_all['count'].'</td>';
-	                echo '<td>'.$unsubscrib_count_by_date['count'].'</td>';
+	                echo '<td>'.$unsubcrib_count.'</td>';
 	                //echo '<td>'.$unsubscrib_count_all['count'].'</td>';
 
                 }
